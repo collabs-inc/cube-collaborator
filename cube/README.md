@@ -10,11 +10,15 @@ The build preserves `LICENSE.md` (FSL-1.1-ALv2), `NOTICE.md`, the app's NOTICE,
 Electron notices and dependency licenses. FSL is not an OSI open-source license;
 the upstream terms include internal use and access as a permitted purpose.
 
-The one upstream integration change adds `COLLAB_CLI_DIR` to the native CLI
+The upstream integration adds `COLLAB_CLI_DIR` to the native CLI
 installer. Cube points it into its private persistent data directory so the app
 does not overwrite or remove the machine's existing `collab` command. HOME and
 the existing coding CLI sign-ins are retained. App state remains in the upstream
 `$HOME/.collaborator` directory, outside the disposable Cube source checkout.
+
+The native sidecar also honors its configured Unix session socket directory.
+Upstream ignored that option and wrote test sessions into the real home path;
+the existing Linux sidecar tests caught this during the first isolated build.
 
 Build and cloud runtime verification are pending. Read this document before
 changing the `cube/` package or its build workflow.

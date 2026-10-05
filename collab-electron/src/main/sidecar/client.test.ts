@@ -124,6 +124,7 @@ describe("SidecarClient", () => {
       rows: 24,
     });
     assert.match(sessionId, /^[0-9a-f]{16}$/);
+    if (process.platform !== "win32") assert.equal(path.dirname(socketPath), SESSION_DIR);
 
     const chunks: DataChunk[] = [];
     const dataSock = await client.attachDataSocket(

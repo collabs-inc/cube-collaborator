@@ -2,6 +2,7 @@
 import * as net from "node:net";
 import * as fs from "node:fs";
 import * as crypto from "node:crypto";
+import { join } from "node:path";
 import * as pty from "node-pty";
 import type { IDisposable } from "node-pty";
 import { displayCommandName } from "@collab/shared/path-utils";
@@ -687,7 +688,9 @@ export class SidecarServer {
   }
 
   private sessionSocketPath(sessionId: string): string {
-    return buildSessionSocketPath(sessionId);
+    return process.platform === "win32"
+      ? buildSessionSocketPath(sessionId)
+      : join(this.opts.sessionSocketDir, `${sessionId}.sock`);
   }
 
   private getForegroundCommand(session: Session): string {

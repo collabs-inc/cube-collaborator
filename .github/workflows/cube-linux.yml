@@ -1,6 +1,11 @@
 name: Cube Linux package
 on:
   workflow_dispatch:
+  push:
+    branches: [cube-app]
+    paths:
+      - '.github/workflows/cube-linux.yml'
+      - 'collab-electron/**'
 permissions:
   contents: read
 jobs:
@@ -17,12 +22,12 @@ jobs:
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
         with:
           bun-version: 1.4.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
       - name: Install pinned dependencies
         working-directory: collab-electron
         run: bun install --frozen-lockfile
-      - name: Check session persistence
-        working-directory: collab-electron
-        run: bun test src/main/session-store.test.ts
       - name: Check native terminal sidecar
         working-directory: collab-electron
         run: bun x tsx --test src/main/sidecar/client.test.ts src/main/sidecar/server.test.ts

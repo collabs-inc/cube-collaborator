@@ -1,0 +1,12 @@
+{
+  "version": "0.8.4",
+  "upstreamRevision": "476b8efc942ee5f430a9b8bf832b8560a8cf76c2",
+  "buildRevision": "9944125583ff354fd74d4696397525eb0e416611",
+  "buildRun": "https://github.com/collabs-inc/cube-collaborator/actions/runs/37251383450",
+  "executable": "@collaboratorelectron",
+  "artifact": {
+    "url": "https://github.com/collabs-inc/cube-collaborator/releases/download/cube-linux-v0.8.4-9944125/collaborator-linux-x64.tgz",
+    "size": 169315270,
+    "sha256": "b70576bd60c996a34d11b684a24a0e020b7f76be056d1a79bed24f1654ec416f"
+  }
+}

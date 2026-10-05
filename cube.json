@@ -1,0 +1,8 @@
+{
+  "name": "Collaborator",
+  "description": "A desktop canvas for terminals, files and coding agents, streamed through Cube with this machine's existing agent sign-ins.",
+  "icon": "cube/icon.png",
+  "platforms": ["linux"],
+  "install": "sh cube/install.sh",
+  "start": "node cube/start.mjs"
+}

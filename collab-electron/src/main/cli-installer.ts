@@ -12,13 +12,14 @@ import { join } from "node:path";
 import { homedir } from "node:os";
 
 const IS_WIN = process.platform === "win32";
-const INSTALL_DIR = IS_WIN
+// Cube keeps this app's helper commands private; the normal desktop default is unchanged.
+const INSTALL_DIR = process.env["COLLAB_CLI_DIR"] || (IS_WIN
   ? join(
     process.env["LOCALAPPDATA"] || join(homedir(), "AppData", "Local"),
     "Collaborator",
     "bin",
   )
-  : join(homedir(), ".local", "bin");
+  : join(homedir(), ".local", "bin"));
 const WRAPPER_PATH = join(INSTALL_DIR, IS_WIN ? "collab-canvas.cmd" : "collab-canvas");
 const MJS_PATH = join(INSTALL_DIR, "collab-cli.mjs");
 
